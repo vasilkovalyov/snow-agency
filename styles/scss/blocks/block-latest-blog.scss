@@ -1,0 +1,13 @@
+@use '../settings/spacing.scss';
+
+.block-latest-blog {
+    padding: spacing.$xxl 0;
+
+    &__heading-block {
+        margin-bottom: 50px;
+    }
+    
+    &__list {
+        display: flex;
+    }
+}

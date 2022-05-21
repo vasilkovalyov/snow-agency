@@ -11,7 +11,23 @@ const Template: ComponentStory<typeof Post> = (args) => <Post {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  title: 'Heading',
-  text: 'Lorem ipsum dolor',
-  image: '/images/img.png',
+  image: {
+    url: '/images/intro-home.jpg',
+    alt: 'New Branding Agency',
+  },
+  date: '14 Jan, 2022',
+  heading: 'Baileys predicts the mouth-watering treat trends for 2022',
+  link: {
+    url: '/',
+  },
+  categories: [
+    {
+      id: '1',
+      name: 'LEADERSHIP',
+    },
+    {
+      id: '2',
+      name: 'CORpORATE',
+    },
+  ],
 }

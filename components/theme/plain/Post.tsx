@@ -1,19 +1,46 @@
 import React from 'react'
+import Link from 'next/link'
+import cn from 'classnames'
 
-interface IPost {
-  title: string
-  text: string
-  image: string
-}
+import Image from './Image'
+import Typography from './Typography'
+import Categories from './Categories'
 
-function Post({ title, text, image }: IPost) {
+import { IPost } from '../../../interfaces/common'
+import { HeadingLevel } from '../../../enums/common'
+
+function Post({ image, date, heading, categories, view, link }: IPost) {
+  const postView = cn({
+    'post--simple': view === 'simple',
+    'post--full': view === 'full',
+  })
+
+  const PostLink = ({ children, url, target }: { children: React.ReactNode; url: string; target: string }) => (
+    <Link href={url}>
+      <a className="post__link" target={target}>
+        {children}
+      </a>
+    </Link>
+  )
+
   return (
-    <div className="post">
+    <div className={`post ${postView}`}>
+      {image && (
+        <PostLink url={link.url} target={link.target || ''}>
+          <Image className="post__image" image={image} />
+        </PostLink>
+      )}
       <div className="post__body">
-        {image && <img src={image} width="500" height="400" alt={title} />}
-        <h3 className="post__heading">{title}</h3>
-        <p>{text}</p>
-        <span className="icon-pinterest"></span>
+        <ul className="post__top-info list-reset">
+          <li className="post__date">{date}</li>
+          <li className="post__type">Story</li>
+        </ul>
+        <PostLink url={link.url} target={link.target || ''}>
+          <Typography text={heading} level={HeadingLevel.H3} className="post__heading" />
+        </PostLink>
+        {categories && categories.length ? (
+          <Categories className="post__categories text-uppercase" items={categories} />
+        ) : null}
       </div>
     </div>
   )

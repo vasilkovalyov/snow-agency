@@ -1,3 +1,27 @@
+@use '../settings/font-sizes.scss' as fz;
+@use '../tools/responsive.scss';
+@use '../settings/spacing.scss';
+
 .footer {
-    
+    padding: spacing.$xxl 0;
+    color: var(--text-color-secondary);
+    background-color: var(--bg-footer);
+
+    a {
+        color: inherit;
+    }
+
+    &__logo {
+        max-width: 85px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    &__text {
+        font-size: fz.$size-xs;
+    }
+
+    &__social-heading {
+        color: inherit;
+    }
 }

@@ -1,3 +1,29 @@
+@use '../settings/font-sizes.scss' as fz;
+@use '../tools/responsive.scss';
+@use '../settings/spacing.scss';
+
 .post {
-    border: 1px solid red;
+    max-width: 340px;
+    width: 100%;
+
+    &__body {
+        padding: spacing.$m spacing.$s;
+    }
+
+    &__top-info {
+        display: flex;
+        align-items: center;
+
+        li {
+            font-size: fz.$size-xs;
+            margin-bottom: 10px;
+
+            &:not(:last-child) {
+                &:after {
+                    content: '|';
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
 }

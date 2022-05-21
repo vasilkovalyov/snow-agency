@@ -1,0 +1,88 @@
+@use '../settings/font-sizes.scss' as fz;
+@use '../tools/responsive.scss';
+@use '../settings/spacing.scss';
+@use '../settings/colors.scss';
+@use '../tools/mixins.scss';
+
+.project {
+    position: relative;
+    width: 100%;
+    height: 268px;
+    color: colors.$white;
+    margin-bottom: 20px;
+
+    @include responsive.mq($from: mobile_md) {
+        height: 28vw;
+        max-height: 300px;
+        margin-bottom: 0;
+    }
+    
+    @include responsive.mq($from: tablet) {
+        max-width: 100%;
+    }
+
+
+    &:hover {
+        .project__overlay {
+            opacity: 1;
+        }
+
+        .project__heading {
+            transform: translateY(0);
+            transition-delay: 0.3s;
+            opacity: 1;
+        }
+
+        .project__category {
+            transform: translateY(0);
+            transition-delay: 0.4s;
+            opacity: 1;
+        }
+
+    } 
+
+    &__overlay {
+        opacity: 0;
+
+        @include mixins.animate(opacity);
+    }
+
+    &__link {
+        @include mixins.absoluteCover();
+        z-index: 3;
+    }
+
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 1;
+        @include mixins.absoluteCover();
+        
+    }
+
+    &__image {
+        @include mixins.absoluteCover();
+    
+        img {
+            @include mixins.coverImage();
+        }
+    }
+
+    &__heading {
+        color: inherit;
+        transform: translateY(30px);
+        opacity: 0;
+        @include mixins.animate(opacity transform);
+        transition-timing-function: ease-in-out;
+    }
+
+    &__category {
+        transform: translateY(30px);
+        opacity: 0;
+        @include mixins.animate(opacity transform);
+        transition-timing-function: ease-in-out;
+
+    }
+}

@@ -1,0 +1,15 @@
+@use '../settings/spacing.scss';
+
+.block-projects {
+    padding: spacing.$xxl 0;
+
+    &__heading-block {
+        margin-bottom: 50px;
+    }
+
+    &__row {
+        .block-projects__col {
+            padding: 0;
+        }
+    }
+}

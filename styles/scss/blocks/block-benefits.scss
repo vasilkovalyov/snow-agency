@@ -1,0 +1,37 @@
+@use '../settings/font-sizes.scss' as fz;
+@use '../tools/responsive.scss';
+@use '../settings/spacing.scss';
+@use '../settings/colors.scss';
+
+.block-benefits {
+    padding-top: calc(spacing.$xxxl + spacing.$l);
+    padding-bottom: spacing.$l;
+    background-color: colors.$black;
+    color: colors.$white;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    &__icon {
+        flex: 1 0 50px;
+        max-width: 50px;
+        margin-right: 24px;
+    }
+    
+    &__body {
+        flex: 0 1 auto;
+    }
+
+    &__count {
+        font-size: fz.$size-s;
+        margin-bottom: 8px;
+    }
+
+    &__heading {
+        font-size: fz.$size-s;
+        margin-bottom: 0;
+    }
+}

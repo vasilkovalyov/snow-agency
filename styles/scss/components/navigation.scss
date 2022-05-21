@@ -1,0 +1,42 @@
+@use '../settings/font-sizes.scss' as fz;
+@use '../tools/responsive.scss';
+@use '../settings/spacing.scss';
+
+.navigation {
+    font-size: fz.$size-xs;
+
+    &__link {
+        color: inherit;
+    }
+
+    &.header-navigation {
+        .navigation__list {
+            @include responsive.mq($from: tablet) {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+
+        .navigation__item {
+            &:not(:first-child) {
+                margin-left: 14px;
+            }
+        }
+    }
+
+    &.footer-navigation {
+        .navigation__list {
+            display: flex;
+    
+            @include responsive.mq($from: tablet) {
+                justify-content: flex-end;
+            }
+        }
+    
+        .navigation__item {
+            &:not(:first-child) {
+                margin-left: 14px;
+            }
+        }
+    }
+}

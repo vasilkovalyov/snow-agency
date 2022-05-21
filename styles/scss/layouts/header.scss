@@ -1,2 +1,18 @@
+@use '../settings/font-sizes.scss' as fz;
+@use '../tools/responsive.scss';
+@use '../settings/spacing.scss';
+
 .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    padding: spacing.$m 0;
+    color: var(--text-color-secondary);
+
+    &__logo {
+        max-width: 100px;
+        width: 100%;
+    }
 }

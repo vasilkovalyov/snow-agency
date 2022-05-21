@@ -3,7 +3,7 @@ import "../styles/scss/main.scss"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-  layout: 'centered',
+  // layout: 'centered',
   viewMode: 'preview',
   controls: {
     matchers: {
@@ -15,7 +15,7 @@ export const parameters = {
     storySort: {
       method: 'alphabetical',
       order: [
-        'Diageo Design System',
+        'Design System',
         ['Welcome'],
         'Foundation',
         'Components',

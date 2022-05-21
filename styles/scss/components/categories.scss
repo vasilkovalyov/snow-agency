@@ -1,0 +1,25 @@
+@use '../settings/font-sizes.scss' as fz;
+@use '../tools/responsive.scss';
+@use '../settings/spacing.scss';
+
+.categories {
+    &--horizontal {
+        .categories__list {
+            display: flex;
+            align-items: center;
+            margin-left: -(spacing.$xxs);
+            margin-right: -(spacing.$xxs);
+        }
+    }
+
+    &--vertical {
+
+    }
+
+    &__item {
+        margin-bottom: 10px;
+        padding: spacing.$xxs;
+        font-size: fz.$size-xxs;
+    }
+
+}

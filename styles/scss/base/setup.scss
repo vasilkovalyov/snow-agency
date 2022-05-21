@@ -21,7 +21,9 @@ $base-link-hover-color:       rgba(var(--link-color), 0.5) !default;
 $font-size-base:              fz.$size-s !default;
 $line-height-base:            fz.$t-lh !default;
 
-$container-width:             1200px;
+$container-width:             1160px;
+$container-width-middle:      760px;
+$container-width-large:       1366px;
 $padding-container:           0 spacing.$m;
 
 $animation-speed:             0.3s;
