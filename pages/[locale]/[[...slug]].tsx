@@ -20,6 +20,7 @@ import { getPageData } from '../../libs/cms/queries'
 //     },
 //   }
 // }
+
 export const getStaticPaths = async () => {
   return {
     paths: [
