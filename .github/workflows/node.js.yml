@@ -34,5 +34,6 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPOSITORY_NAME: vasilkovalyov/vasilkovalyov.github.io/
         branch: gh-pages # The branch the action should deploy to.
         folder: out # The folder the action should deploy.
