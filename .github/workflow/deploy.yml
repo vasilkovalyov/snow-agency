@@ -4,12 +4,16 @@ on:
   push:
     branches:
       - main
-
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
-
 jobs:
   deployment:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix: [14.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -28,5 +32,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
+          target_branch: gh-pages
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./out
