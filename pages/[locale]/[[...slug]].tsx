@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import { useDispatch } from 'react-redux'
+import actions from '../../redux/actions'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import { renderByContentType, renderBlocks } from '../../components'
+import PrimaryLayout from '../../components/theme/plain/Layout/PrimaryLayout'
 
-import { IPage } from '../../interfaces/pages'
+import { IPage, ISeo } from '../../interfaces/pages'
+
+import { PageType } from '../../types/common'
 import { Block } from '../../enums/blocks'
 import { getPageData } from '../../libs/cms/queries'
 
@@ -59,23 +65,30 @@ export const getServerSideProps = async ({ params, resolvedUrl }) => {
 //   }
 // }
 
-const DynamicPage: NextPage = ({ page }: IPage) => {
+const defaultSeo: ISeo = {
+  title: 'Title',
+  keywords: ['Keywords'],
+  description: 'Description',
+}
+
+const DynamicPage: NextPage = ({ page }: PageType) => {
   console.log(page)
-  const seo = page.seo
-  const header = renderByContentType(Block.BlockHeader)
-  const footer = renderByContentType(Block.BlockFooter)
+  const seo = page.seo || defaultSeo
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(actions.set_page(page))
+  }, [])
   return (
-    <div id="wrapper">
+    <>
       <Head>
-        {/* <title>{seo.title}</title> */}
-        {/* <meta name="description" content={seo.description} /> */}
-        {/* <meta name="keywords" content={seo.keywords.toString()}></meta> */}
+        <title>{seo.title || 'Title'}</title>
+        <meta name="description" content={seo.description || 'Description'} />
+        <meta name="keywords" content={seo.keywords.toString() || 'Keywords'}></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {header}
-      <main className="main">{renderBlocks(page.blocks)}</main>
-      {footer}
-    </div>
+      <PrimaryLayout>{renderBlocks(page.blocks)}</PrimaryLayout>
+    </>
   )
 }
 

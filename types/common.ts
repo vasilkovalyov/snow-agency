@@ -1,4 +1,5 @@
 import { HeadingLevel, EnumsIcon } from '../enums/common'
+import { IPage } from '../interfaces/pages'
 
 export type Identificator = string
 export type DateType = string
@@ -13,3 +14,7 @@ export type GridSizes = 'sm' | 'md' | 'lg' | 'xl'
 export type ColSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 export type GridItemsAlignment = 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
 export type GridJustify = 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly'
+
+export type PageType = {
+  page: IPage
+}

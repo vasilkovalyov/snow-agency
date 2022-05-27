@@ -3,7 +3,7 @@ import { IBlockHero } from '../interfaces/blocks'
 import { IImage, ISocial } from '../interfaces/common'
 
 export interface ISeo {
-  id: Identificator
+  id?: Identificator
   title: string
   keywords: string[]
   description: string
@@ -26,10 +26,13 @@ export interface IContentBlock extends Pick<IField, 'heading' | 'subheading' | '
 }
 
 export interface IPage {
-  page: {
-    seo: ISeo
-    blocks: IContentBlock[]
-  }
+  id?: Identificator
+  slug: string
+  title?: string
+  seo: ISeo
+  blocks: IContentBlock[]
+  blockHeader: IHeader
+  blockFooter: IFooter
 }
 
 export interface INavigation {
