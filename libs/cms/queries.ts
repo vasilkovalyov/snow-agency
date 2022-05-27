@@ -22,19 +22,19 @@ export async function getPageData(page: string) {
           title
           description
         }
-        blockHero {
-          id
-          slug
-          subheading
-          image {
-            id
-            url
-          }
-          heading {
-            html
-          }
-        }
         blocks {
+          ... on BlockHero {
+            id
+            slug
+            subheading
+            heading {
+              html
+            }
+            image {
+              id
+              url
+            }
+          }
           ... on BlockBenefit {
             id
             slug

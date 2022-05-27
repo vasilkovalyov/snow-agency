@@ -21,13 +21,13 @@ export interface IField {
 export interface IContentBlock extends Pick<IField, 'heading' | 'subheading' | 'text'> {
   id: Identificator
   slug: string
+  overlay?: false | null
   items: IField[]
 }
 
 export interface IPage {
   page: {
     seo: ISeo
-    blockHero?: IBlockHero
     blocks: IContentBlock[]
   }
 }
