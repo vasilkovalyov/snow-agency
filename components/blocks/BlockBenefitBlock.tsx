@@ -1,7 +1,7 @@
 import { getComponent } from 'components'
-import { IBlockBenefits } from '../interfaces/blocks'
+import { IBlockBenefits } from '../../interfaces/blocks'
 
-import { Block } from '../enums/blocks'
+import { Block } from '../../enums/blocks'
 
 export default function BlockBenefitBlock() {
   const props = {

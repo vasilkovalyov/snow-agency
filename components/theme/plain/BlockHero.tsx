@@ -3,6 +3,7 @@ import React from 'react'
 import Image from './Image'
 import Typography from './Typography'
 import Container from './Container'
+import { RichTextType } from '../../../types/common'
 
 import { IBlockHero } from '../../../interfaces/blocks'
 

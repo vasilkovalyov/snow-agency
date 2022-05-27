@@ -15,7 +15,7 @@ function BlockIntroBanner({ image, heading, overlay = true }: IBlockIntroBanner)
       <Container className="block-intro-banner__container text-align--center">
         {heading && (
           <Typography
-            text={heading}
+            text={heading as string}
             level={HeadingLevel.H1}
             className="block-intro-banner__heading text-uppercase color-white"
           />

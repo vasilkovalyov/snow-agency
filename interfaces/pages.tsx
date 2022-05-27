@@ -1,4 +1,4 @@
-import { Identificator } from '../types/common'
+import { Identificator, RichTextType } from '../types/common'
 import { IBlockHero } from '../interfaces/blocks'
 import { IImage, ISocial } from '../interfaces/common'
 
@@ -11,14 +11,14 @@ export interface ISeo {
 
 export interface IField {
   id: Identificator
-  heading: string
+  heading: string | RichTextType
   subheading: string
   text: string
   image: IImage
   author: string
 }
 
-export interface IContentBlock extends Pick<IField, 'heading' | 'subheading' | 'text'> {
+export interface IContentBlock extends Pick<IField, 'heading' | 'subheading' | 'text' | 'image'> {
   id: Identificator
   slug: string
   overlay?: false | null

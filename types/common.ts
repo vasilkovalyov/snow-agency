@@ -9,6 +9,9 @@ export type AlignContentType = 'center' | 'right'
 export type ContainerWidthType = 'medium' | 'large'
 export type PostViewType = 'simple' | 'full'
 export type OrientType = 'vertical' | 'horizontal'
+export type RichTextType = {
+  html: string
+}
 
 export type GridSizes = 'sm' | 'md' | 'lg' | 'xl'
 export type ColSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12

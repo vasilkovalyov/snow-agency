@@ -1,17 +1,15 @@
-import React, { useEffect } from 'react'
-
+import React from 'react'
+import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import actions from '../../redux/actions'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { renderByContentType, renderBlocks } from '../../components'
+import { renderBlocks } from '../../components'
 import PrimaryLayout from '../../components/theme/plain/Layout/PrimaryLayout'
 
-import { IPage, ISeo } from '../../interfaces/pages'
-
+import { ISeo } from '../../interfaces/pages'
 import { PageType } from '../../types/common'
-import { Block } from '../../enums/blocks'
 import { getPageData } from '../../libs/cms/queries'
 
 export const getServerSideProps = async ({ params, resolvedUrl }) => {
@@ -75,10 +73,13 @@ const DynamicPage: NextPage = ({ page }: PageType) => {
   console.log(page)
   const seo = page.seo || defaultSeo
   const dispatch = useDispatch()
+  dispatch(actions.set_page(page))
+  const router = useRouter()
 
-  useEffect(() => {
-    dispatch(actions.set_page(page))
-  }, [])
+  if (!router.isReady) {
+    return <div>Loading...</div>
+  }
+
   return (
     <>
       <Head>

@@ -1,7 +1,7 @@
 import { getComponent } from 'components'
-import { IBlockAbout } from '../interfaces/blocks'
+import { IBlockAbout } from '../../interfaces/blocks'
 
-import { Block } from '../enums/blocks'
+import { Block } from '../../enums/blocks'
 
 export default function BlockHeaderBlock() {
   const props = {

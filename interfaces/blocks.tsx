@@ -1,11 +1,10 @@
 import { IImage, ITestimonial, IPost, IProject, IBenefit } from './common'
+import { RichTextType } from '../types/common'
 import { Block } from '../enums/blocks'
 
 export interface IBlockHero {
   image: IImage
-  heading: {
-    html: string
-  }
+  heading?: string | RichTextType
   subheading?: string
   overlay: boolean
 }
@@ -13,7 +12,7 @@ export interface IBlockHero {
 export interface IBlockIntroBanner {
   slug?: string
   image: IImage
-  heading?: string
+  heading?: string | RichTextType
   overlay: boolean
 }
 

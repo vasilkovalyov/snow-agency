@@ -1,11 +1,11 @@
 import React from 'react'
-import BlockHeaderBlock from '../blocks/BlockHeaderBlock'
-import BlockFooterBlock from '../blocks/BlockFooterBlock'
-import BlockHeroBlock from '../blocks/BlockHeroBlock'
-import BlockBenefitBlock from '../blocks/BlockBenefitBlock'
-import BlockTestimonialBlock from '../blocks/BlockTestimonialBlock'
-import BlockIntroBannerBlock from '../blocks/BlockIntroBannerBlock'
-import BlockAboutBlock from '../blocks/BlockAboutBlock'
+import BlockHeaderBlock from './blocks/BlockHeaderBlock'
+import BlockFooterBlock from './blocks/BlockFooterBlock'
+import BlockHeroBlock from './blocks/BlockHeroBlock'
+import BlockBenefitBlock from './blocks/BlockBenefitBlock'
+import BlockTestimonialBlock from './blocks/BlockTestimonialBlock'
+import BlockIntroBannerBlock from './blocks/BlockIntroBannerBlock'
+import BlockAboutBlock from './blocks/BlockAboutBlock'
 
 import plainThemeComponents from './theme/plain'
 import { IRegistryItem } from '../interfaces/blocks'
@@ -28,7 +28,9 @@ const registeredComponents: { [theme: string]: IRegistryItem[] } = {
 }
 
 export function renderBlocks(blocks: IContentBlock[] = []) {
-  return blocks.map((blockContent, index) => renderBlock(blockContent.slug as Block, index))
+  return blocks.map((blockContent, index) => {
+    return renderBlock(blockContent.slug as Block, index)
+  })
 }
 
 export function renderBlock(contentType: Block, index?: number) {
