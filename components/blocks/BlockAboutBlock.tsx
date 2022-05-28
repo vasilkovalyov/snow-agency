@@ -1,19 +1,29 @@
+import { useSelector } from 'react-redux'
+
 import { getComponent } from 'components'
+import { IStore } from '../../interfaces/redux'
 import { IBlockAbout } from '../../interfaces/blocks'
 
 import { Block } from '../../enums/blocks'
 
 export default function BlockHeaderBlock() {
+  const pageStore = useSelector((state: IStore) => state.pageStore)
+  const blocks = pageStore.page.blocks
+  const data = blocks.filter((item) => {
+    if (item.slug === Block.BlockAbout) {
+      return item
+    }
+  })[0]
+
+  if (!data) return
+
   const props = {
-    id: 'cl3hjoncu1byg0cmlbwjlvt9r',
-    slug: 'blockAbout',
-    heading: '',
-    subheading: '',
-    image: {
-      id: 'cl3hhfmt31b6x0elcf1k8q5cx',
-      url: 'https://media.graphassets.com/TXJhVSOISvuB92hWYQAV',
-    },
+    id: data.id,
+    slug: data.slug,
+    heading: data.heading as string,
+    subheading: data.subheading,
+    image: data.image,
   }
 
-  return getComponent<IBlockAbout>(Block.BlockHeader, props)
+  return getComponent<IBlockAbout>(Block.BlockAbout, props)
 }

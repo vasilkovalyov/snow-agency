@@ -27,42 +27,6 @@ export const getServerSideProps = async ({ params, resolvedUrl }) => {
   }
 }
 
-// export const getStaticPaths = async () => {
-//   return {
-//     paths: [
-//       {
-//         params: {
-//           locale: 'en',
-//           slug: [''],
-//         },
-//       },
-//       {
-//         params: {
-//           locale: 'en',
-//           slug: ['about'],
-//         },
-//       },
-//     ],
-//     fallback: false,
-//   }
-// }
-
-// export const getStaticProps = async (props) => {
-//   let slug = '/'
-//   if (Array.isArray(props.params?.slug)) {
-//     slug = props.params?.slug[0]
-//   }
-//   const data = await getPageData(slug)
-//   console.log('data', data)
-//   let page = {}
-//   if (data.page) page = data.page
-//   return {
-//     props: {
-//       page: page,
-//     },
-//   }
-// }
-
 const defaultSeo: ISeo = {
   title: 'Title',
   keywords: ['Keywords'],

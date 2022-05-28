@@ -64,7 +64,16 @@ export async function getPageData(page: string) {
             image {
               id
               url
-              height
+            }
+          }
+          ... on BlockAbout {
+            id
+            slug
+            subheading
+            heading
+            image {
+              id
+              url
             }
           }
         }
@@ -108,8 +117,8 @@ export async function getPageData(page: string) {
             title
             pages {
               id
-              title
               slug
+              title
             }
           }
         }

@@ -14,6 +14,8 @@ export default function BlockIntroBannerBlock() {
     }
   })[0]
 
+  if (!data) return
+
   const props: IBlockIntroBanner = {
     slug: data.slug,
     image: data.image,

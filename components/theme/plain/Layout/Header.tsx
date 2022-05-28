@@ -10,6 +10,7 @@ import Col from '../Grid/Col'
 import { IHeader } from '../../../../interfaces/pages'
 
 export default function Header({ slug, image, navigation }: IHeader) {
+  if (!navigation) return
   return (
     <header className="header">
       <Container className="header__container">
