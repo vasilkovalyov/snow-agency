@@ -1,13 +1,17 @@
-import { useSelector } from 'react-redux'
+import { useContext } from 'react'
+import { PageProvider } from '../../context/project'
 
 import { getComponent } from 'components'
-import { IStore } from '../../interfaces/redux'
 import { IFooter } from '../../interfaces/pages'
 import { Block } from '../../enums/blocks'
 
 export default function BlockFooterBlock() {
-  const pageStore = useSelector((state: IStore) => state.pageStore)
-  const blockFooter = pageStore.page.blockFooter
+  const ctx = useContext(PageProvider)
+  if (ctx && !ctx.page.blockHeader) return
+
+  const blockFooter: IFooter | undefined = ctx?.page.blockFooter
+  if (!blockFooter) return
+
   const props: IFooter = {
     id: blockFooter.id,
     slug: blockFooter.slug,

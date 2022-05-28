@@ -1,18 +1,23 @@
-import { useSelector } from 'react-redux'
+import { useContext } from 'react'
+import { PageProvider } from '../../context/project'
 
 import { getComponent } from 'components'
-import { IStore } from '../../interfaces/redux'
 import { IBlockIntroBanner } from '../../interfaces/blocks'
 import { Block } from '../../enums/blocks'
 
 export default function BlockIntroBannerBlock() {
-  const pageStore = useSelector((state: IStore) => state.pageStore)
-  const blocks = pageStore.page.blocks
-  const data = blocks.filter((item) => {
-    if (item.slug === Block.BlockIntroBanner) {
-      return item
-    }
-  })[0]
+  const ctx = useContext(PageProvider)
+  if (ctx && !ctx.page.blocks) return
+
+  const blocks = ctx?.page.blocks
+  let data: IBlockIntroBanner | null = null
+  if (blocks && blocks?.length) {
+    data = blocks.filter((item) => {
+      if (item.slug === Block.BlockIntroBanner) {
+        return item
+      }
+    })[0]
+  }
 
   if (!data) return
 

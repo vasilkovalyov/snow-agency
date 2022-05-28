@@ -1,13 +1,17 @@
-import { useSelector } from 'react-redux'
+import { useContext } from 'react'
+import { PageProvider } from '../../context/project'
 
 import { getComponent } from 'components'
-import { IStore } from '../../interfaces/redux'
 import { IHeader } from '../../interfaces/pages'
 import { Block } from '../../enums/blocks'
 
 export default function BlockHeaderBlock() {
-  const pageStore = useSelector((state: IStore) => state.pageStore)
-  const blockHeader = pageStore.page.blockHeader
+  const ctx = useContext(PageProvider)
+  if (ctx && !ctx.page.blockHeader) return
+
+  const blockHeader: IHeader | undefined = ctx?.page.blockHeader
+  if (!blockHeader) return
+
   const props: IHeader = {
     id: blockHeader.id,
     slug: blockHeader.slug,

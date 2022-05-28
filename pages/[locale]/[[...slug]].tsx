@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
-import actions from '../../redux/actions'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import { renderBlocks } from '../../components'
 import PrimaryLayout from '../../components/theme/plain/Layout/PrimaryLayout'
 
-import { ISeo } from '../../interfaces/pages'
+import { IPage, ISeo } from '../../interfaces/pages'
 import { PageType } from '../../types/common'
 import { getPageData } from '../../libs/cms/queries'
+
+import { PageProvider } from '../../context/project'
 
 export const getServerSideProps = async ({ params, resolvedUrl }) => {
   let slug = '/'
@@ -34,11 +34,19 @@ const defaultSeo: ISeo = {
 }
 
 const DynamicPage: NextPage = ({ page }: PageType) => {
-  console.log(page)
+  console.log('page', page)
   const seo = page.seo || defaultSeo
-  const dispatch = useDispatch()
-  dispatch(actions.set_page(page))
+  const [pageProject, setPageProject] = useState<PageType | null>(null)
   const router = useRouter()
+
+  useEffect(() => {
+    if (page) {
+      const state = {
+        page: { ...page },
+      }
+      setPageProject(state)
+    }
+  }, [page])
 
   if (!router.isReady) {
     return <div>Loading...</div>
@@ -52,7 +60,9 @@ const DynamicPage: NextPage = ({ page }: PageType) => {
         <meta name="keywords" content={seo.keywords.toString() || 'Keywords'}></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <PrimaryLayout>{renderBlocks(page.blocks)}</PrimaryLayout>
+      <PageProvider.Provider value={pageProject}>
+        <PrimaryLayout>{renderBlocks(page.blocks)}</PrimaryLayout>
+      </PageProvider.Provider>
     </>
   )
 }

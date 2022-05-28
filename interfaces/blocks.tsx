@@ -3,17 +3,17 @@ import { RichTextType } from '../types/common'
 import { Block } from '../enums/blocks'
 
 export interface IBlockHero {
-  image: IImage
+  image?: IImage | null
   heading?: string | RichTextType
   subheading?: string
-  overlay: boolean
+  overlay?: boolean | null
 }
 
 export interface IBlockIntroBanner {
   slug?: string
   image: IImage
   heading?: string | RichTextType
-  overlay: boolean
+  overlay?: boolean | null
 }
 
 export interface IBlockTestimonial {
@@ -36,7 +36,7 @@ export interface IBlockAbout {
   slug: string
   heading: string
   subheading: string
-  richText?: string
+  richText?: string | RichTextType
   image?: IImage | null
 }
 
